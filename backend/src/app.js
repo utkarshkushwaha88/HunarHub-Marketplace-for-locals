@@ -27,7 +27,7 @@ app.use(helmet());
 // CLIENT_URL (comma-separated). Keep localhost available for development.
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://hunar-hub-marketplace-for-locals-re593yx68.vercel.app",
+  "https://hunarhub-marketplace-for-locals-fro.vercel.app",
   ...env.clientUrl.split(",").map((origin) => origin.trim()).filter(Boolean),
 ];
 
