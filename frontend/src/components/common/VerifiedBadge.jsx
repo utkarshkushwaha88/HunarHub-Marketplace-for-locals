@@ -1,0 +1,2 @@
+import { ShieldCheck } from "lucide-react";
+export default function VerifiedBadge(){return <span title="Verified" className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent-soft dark:bg-violet-950/40 px-2 py-1 text-[10px] font-extrabold text-accent"><ShieldCheck size={13}/> Verified</span>}

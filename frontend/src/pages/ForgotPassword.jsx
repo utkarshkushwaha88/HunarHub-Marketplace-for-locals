@@ -1,0 +1,9 @@
+import { Link } from "react-router-dom";
+export default function ForgotPassword(){return <main className="relative grid min-h-[calc(100vh-72px)] place-items-center overflow-hidden bg-background dark:bg-slate-950 px-4 py-12">
+ <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-accent-soft dark:bg-violet-950/40 blur-3xl"/>
+ <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-accent-soft dark:bg-violet-950/40 blur-3xl"/>
+ <form className="relative w-full max-w-md rounded-3xl border border-border dark:border-slate-800 bg-surface dark:bg-slate-900 p-7 shadow-float dark:shadow-2xl dark:shadow-black/30 sm:p-9">
+<Link to="/" className="inline-flex items-center gap-2 text-lg font-black text-primary dark:text-slate-100"><span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-white">H</span>Hunar<span className="text-accent-soft0">Hub</span></Link>
+<h1 className="mt-8 text-3xl font-black tracking-tight">Reset your password</h1><p className="mt-2 text-sm text-secondary dark:text-slate-400">Enter your email and we'll send reset instructions.</p>
+<label className="mt-7 block text-sm font-bold text-primary dark:text-slate-100">Email<input className="mt-2 w-full rounded-xl border border-border dark:border-slate-800 px-4 py-3 outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent-soft" type="email" placeholder="you@example.com"/></label>
+<button className="mt-6 w-full rounded-xl bg-accent px-5 py-3 font-bold text-white hover:bg-primary">Send Reset Link</button><p className="mt-6 text-center text-sm"><Link className="font-bold text-accent" to="/login">← Back to login</Link></p></form></main>}

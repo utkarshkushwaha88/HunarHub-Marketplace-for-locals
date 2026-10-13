@@ -1,0 +1,21 @@
+import { Router } from "express";
+import { dashboard, verifyEntrepreneur, updateOrderStatus, updateRequestStatus, listEntrepreneurs, listOrders, listRequests, listCategories, createCategory, updateCategory, deleteCategory } from "../controllers/admin.controller.js";
+import { protect, authorize } from "../middleware/auth.js";
+import { adminComplaints, updateComplaint } from "../controllers/complaint.controller.js";
+
+const router = Router();
+router.use(protect, authorize("admin"));
+router.get("/dashboard", dashboard);
+router.get("/entrepreneurs", listEntrepreneurs);
+router.patch("/entrepreneurs/:id/verify", verifyEntrepreneur);
+router.get("/orders", listOrders);
+router.patch("/orders/:id/status", updateOrderStatus);
+router.get("/service-requests", listRequests);
+router.patch("/service-requests/:id/status", updateRequestStatus);
+router.get("/complaints", adminComplaints);
+router.patch("/complaints/:id", updateComplaint);
+router.get("/categories", listCategories);
+router.post("/categories", createCategory);
+router.patch("/categories/:id", updateCategory);
+router.delete("/categories/:id", deleteCategory);
+export default router;
