@@ -27,23 +27,32 @@ app.use(helmet());
 // CLIENT_URL (comma-separated). Keep localhost available for development.
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://hunarhub-marketplace-for-locals-fro.vercel.app/",
-  ...env.clientUrl.split(",").map((origin) => origin.trim()).filter(Boolean),
+  "https://hunarhub-marketplace-for-locals-fro.vercel.app",
+  ...env.clientUrl
+    .split(",")
+    .map((origin) => origin.trim().replace(/\/$/, ""))
+    .filter(Boolean),
 ];
 
-app.use(cors({
-  origin(origin, callback) {
-    // Requests without an Origin header are typically server-to-server/CLI calls.
-    if (!origin || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    return callback(new Error(`CORS blocked for origin: ${origin}`));
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  optionsSuccessStatus: 204,
-}));
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(
+        new Error(`CORS blocked for origin: ${origin}`)
+      );
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 204,
+  })
+);
+
+
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 app.use(cookieParser());
